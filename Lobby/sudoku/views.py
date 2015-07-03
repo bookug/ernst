@@ -29,6 +29,14 @@ def initialize(request):
 
 def index(request):			#display a default sudoku problem	
 	global html_matrix
+	for i in range(100):
+		try:
+			solution = choice(Solution.objects.all())
+		except Exception,e:
+			solution = Solution()
+			solution.save()
+		solution.generate_solution()	
+		solution.generate_question()
 	context = {'question':html_matrix}
 	return render(request, 'sudoku/index.html', context)
 
@@ -41,14 +49,14 @@ def play(request):	#produce a question, maybe new
 		active_question = choice(Question.objects.filter(rank=level))
 	except Exception,e:
 		active_question = None
-		print e
+		#print e
 	if not active_question:
 		while True:
 			solution = choice(Solution.objects.all())
+			solution.generate_solution()	
 			active_question = solution.generate_question()
 			if active_question.rank == level:
 				break
-	#solution.generate_solution()	#BETTER: add this 
 	for i1 in range(3):	#len(matrix)
 		for j1 in range(3):
 			for i2 in range(3):
@@ -76,9 +84,9 @@ def check(request):
 				for j2 in range(3):
 					pos = i1 * 27 + i2 * 9 + j1 * 3 + j2
 					if test[i1][j1][i2][j2] == '0':
-						print str(pos)
+						#print str(pos)
 						test[i1][j1][i2][j2] = request.POST.get(str(pos))
-						print "assignment successfully!", test[i1][j1][i2][j2]
+						#print "assignment successfully!", test[i1][j1][i2][j2]
 					grid.append(test[i1][j1][i2][j2])		
 					row[i1*3+i2][j1*3+j2] = test[i1][j1][i2][j2]
 					col[j1*3+j2][i1*3+i2] = test[i1][j1][i2][j2]
@@ -88,7 +96,7 @@ def check(request):
 		if flag == False:
 			break
 	for k in range(9):
-		print row[k], col[k]
+		#print row[k], col[k]
 		if set(row[k]) != temp or set(col[k]) != temp:
 			flag = False
 			break

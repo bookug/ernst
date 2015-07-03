@@ -72,25 +72,25 @@ class Solution(models.Model):
 		if randint(0, 1) == 0:
 			while i < 3:
 				while j < 9:
+					#print newmatrix
 					p1 = pos1 * 27 + i * 9 + j
 					p2 = pos2 * 27 + i * 9 + j
-					print pos1, pos2, i, j
+					#print pos1, pos2, i, j
 					t = newmatrix[p1]
 					newmatrix = newmatrix[0:p1] + newmatrix[p2] + newmatrix[p1+1:]
 					newmatrix = newmatrix[0:p2] + t + newmatrix[p2+1:]
-					i += 1
 					j += 1
-		else:
-			while j < 3:
-				while i < 9:
+				i += 1			#not put with j
+		else:					#loop below is better in python!
+			for j in range(3):
+				for i in range(9):
+					#print newmatrix
 					p1 = i * 9 + pos1 * 3 + j
 					p2 = i * 9 + pos2 * 3 + j
-					print pos1, pos2, i, j
+					#print pos1, pos2, i, j
 					t = newmatrix[p1]
 					newmatrix = newmatrix[0:p1] + newmatrix[p2] + newmatrix[p1+1:]
-					newmatrix = newmatrix[0:p2] + t + newmatrix[p2+1]
-					i += 1
-					j += 1
+					newmatrix = newmatrix[0:p2] + t + newmatrix[p2+1:]
 		if not Solution.objects.filter(matrix=newmatrix):
 			solution = Solution(matrix=newmatrix)
 			solution.save()
