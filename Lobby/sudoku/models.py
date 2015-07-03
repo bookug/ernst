@@ -2,7 +2,7 @@ from django.db import models
 from random import *
 
 global empty_size
-empty_size = 8		#0 means empty
+empty_size = 6		#0 means empty
 
 # Create your models here.
 class Solution(models.Model):
@@ -12,7 +12,7 @@ class Solution(models.Model):
 		return self.matrix
 	def generate_question(self):
 		global empty_size
-		num = randint(empty_size/4, empty_size)
+		num = randint(empty_size/2, empty_size)
 		newmatrix = self.matrix
 		while num > 0:
 			pos = randint(0, 80)
@@ -25,15 +25,15 @@ class Solution(models.Model):
 			question = Question(matrix=newmatrix)
 			question.save()
 			question.solutions.add(self)
-			question.save()
 		else:
 			question = Question.objects.get(matrix=newmatrix)
 			if self not in question.solutions:
 				question.solutions.add(self)
-			question.save()
+		question.save()
+		#TODO: compute the difficulty for this question
 		return question
 
-	def generate_solution(self):	#DEBUG
+	def generate_solution(self):	
 		#swap columns or rows
 		newmatrix = self.matrix
 		pos1 = randint(0, 2)
@@ -73,10 +73,11 @@ class Solution(models.Model):
 class Question(models.Model):
 	matrix = models.CharField(max_length=81, default='000000000000000000000000000000000000000000000000000000000000000000000000000000000')
 	solutions = models.ManyToManyField(Solution, default=0)
+	rank = models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.matrix
 
 	def get_solutions(self):
-		return self.solutions	#DEBUG
+		return self.solutions.all()	
 

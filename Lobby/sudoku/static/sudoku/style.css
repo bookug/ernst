@@ -101,3 +101,14 @@
 	width:120px;
 }
 
+#message_pannel{
+	float:right;
+	width:200px;
+	height:10%;
+}
+
+#message_pannel p{
+	width:100%;
+	text-align:center;
+}
+
