@@ -29,7 +29,7 @@ def initialize(request):
 
 def index(request):			#display a default sudoku problem	
 	global html_matrix
-	for i in range(100):
+	for i in range(30):
 		try:
 			solution = choice(Solution.objects.all())
 		except Exception,e:
