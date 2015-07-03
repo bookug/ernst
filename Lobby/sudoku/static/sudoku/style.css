@@ -1,0 +1,103 @@
+#sudoku_div{
+	width:800px;
+	height:600px;
+	margin:0px auto;
+}
+
+#display_panel{
+	float:left;
+}
+
+#sudoku{
+	width:540px;
+	height:540px;
+	border-collapse:collapse;
+	border:medium #333 2px;
+}
+#sudoku td{
+	border:#666 2px solid;
+	width:33%;
+}
+
+.ceiltable{
+	margin:0px auto;
+	border-collapse:collapse;
+	width:180px;
+	height:180px;
+}
+
+.ceiltable tr td{
+	border:#CCC 1px solid;
+	width:33%;
+	height:33%;
+	background-color:green;
+	text-align:center;
+}
+
+.ceiltable tr td input{
+	width:60px;
+	height:60px;
+	text-align:center;
+	background-color:green
+	color:black;
+	border:0px;
+}
+
+.td_nor{
+	cursor:text;
+}
+
+.td_wrong{
+	background:#F30;
+}
+
+.div_yes{
+	display:block;
+}
+
+.div_no{
+	display:none;
+}
+
+.input_no {
+	display:none;
+}
+
+.input_yes {
+	width:20px;
+	height:20px;
+	background:transparent;
+	font-size:14px;
+}
+/*
+#check {
+	float:right;
+}
+*/
+#control_panel{
+	float:right;
+	width:200px;
+	height:50%;
+}
+
+#control_panel p{
+	padding-left:20px;
+}
+
+#control_panel label{
+	width:20px;
+	text-align:center;
+}
+
+#control_panel label select{
+	width:130px;
+}
+
+#control_panel input{
+	width:180px;
+}
+
+#control_panel #usetime{
+	width:120px;
+}
+

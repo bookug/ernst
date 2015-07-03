@@ -1,0 +1,9 @@
+<h1>index page</h1>
+<p>{{ message }}</p>
+<p>please input your nickname:</p>
+<form action="/main/" method="post">
+{% csrf_token %}
+<input type="text" name="nickname" />
+<input type="submit" value="join!" />
+</form>
+

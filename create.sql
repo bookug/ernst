@@ -4,7 +4,7 @@ use platform;
 create table if not exists User (
 		userID		integer		auto_increment,
 		nickName	varchar(30)	not null,
-		roomID		integer		not null default -1,
+		roomID		integer		not null default 0,
 		primary key (userID), 
 		unique index (userID ASC)
 );
@@ -12,7 +12,7 @@ create table if not exists User (
 create table if not exists Act (
 		actID		integer		auto_increment,
 		actName		varchar(30)	not null,
-		number		integer		not null,
+		actNum		integer		not null,
 		primary key (actID),
 		unique index (actID ASC)
 );

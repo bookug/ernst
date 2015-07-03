@@ -1,0 +1,18 @@
+<h1>{{ user.nickName }}</h1>
+<p>please select an action here!</p>
+<form action="/main/invite/" method="post">
+	{% csrf_token %}
+<ul>
+	{% for action in action_list %}
+	<li><input type="radio" name="activity" value="{{ action.id }}" />
+	{{ action.actName }} &nbsp; {{ action.actNum }}</li>
+	{% endfor %}
+</ul>
+<input type="text" name="room_name" />
+<input type="submit" value="create" />
+</form>
+<form action="/main/exit/" method="get">
+	<!--	{% csrf_token %} -->
+	<input type="submit" value="exit" />
+</form>
+

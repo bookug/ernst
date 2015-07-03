@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="{% static 'sudoku/style.css' %}" />
+<!--
+<link type="text/css" rel="stylesheet" href="{% static 'sudoku/bootstrap/css/bootstrap.min.css' %}" />
+-->
+<title>sudoku game</title>
+</head>
+<body>
+<div id="sudoku_div">
+	<form action="/act/1/play/" method="post">
+		{% csrf_token %}
+	<div id="display_panel">
+		{# this is the sudoku 9*9 table #}
+		<table name="sudoku" border="1">
+			{% for i1 in question %}
+			<tr>
+				{% for j1 in i1 %}
+				<td>
+					<table class="ceiltable">
+						{% for i2 in j1 %}
+						<tr>
+							{% for j2 in i2 %}
+							{% autoescape off %}
+							<td>{{ j2 }}</td>
+							{% endautoescape %}
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</table>
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<div id="control_panel">
+		<p><label>time <input type="text" id="usetime"  readonly="readonly" value="0:0:0"/></label></p>
+		<p>
+		<label>difficulty
+			<select id="level">
+				<option value="0">simple</option>
+				<option value="1">normal</option>
+				<option value="2">hard</option>
+			</select>
+		</label>
+		</p>
+		<p><input type="submit" value="start" onClick()="/act/1/play" /></p>
+		<!--		<p><input type="submit" value="  finish  " disabled="disabled" /></p> -->
+		<p><input type="submit" value="check" onClick()="/act/1/check/" /></p>
+		<p><input type="submit" value="answer" onClick()="/act/1/answer/" /></p>
+		<p>{{ message }}</p>
+	</div>
+	</form>
+</div>
+<script type="text/javascript" src="{% static 'sudoku/help.js' %}"></script>
+<script type="text/javascript" src="{% static 'sudoku/js/jquery-2.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'sudoku/bootstrap/js/bootstrap.min.js' %}" /></script>
+</body>
+</html>
+

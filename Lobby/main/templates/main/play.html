@@ -1,0 +1,18 @@
+<h1>all information for your group</h1>
+<form action="{{ act_url }}" method="post">
+	{% csrf_token %}
+<p>activity information: {{ activity }}</p>
+<p>room information: {{ room.roomName }} &nbsp; {{ room.roomSize }}</p>
+<p>user information: </p>
+<ul>
+	{% for user in user_list %}
+	<li>{{ user }}</li>
+	{% endfor %}
+</ul>
+<a href="{{ act_url }}">start activity!</a>
+</form>
+<form action="/main/exit/" method="get">
+	<!--	{% csrf_token %} -->
+	<input type="submit" value="exit" />
+</form>
+

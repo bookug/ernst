@@ -1,0 +1,16 @@
+<h1>please invite exactly {{ user_num }} friends</p>
+<form action="/main/play/" method="post">
+	{% csrf_token %}
+<ul>
+	{% for user in user_list %}
+	<li><input type="checkbox" name="user" value="{{ user.id }}" />
+	{{ user.nickName }} &nbsp; {{ user.room }}</li>
+	{% endfor %}
+</ul>
+<input type="submit" value="invite" />
+</form>
+<form action="/main/exit/" method="get">
+	<!--	{% csrf_token %} -->
+	<input type="submit" value="exit" />
+</form>
+
