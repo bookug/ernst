@@ -45,6 +45,7 @@ def play(request):	#produce a question, maybe new
 				for j2 in range(3):
 					pos = i1 * 27 + i2 * 9 + j1 * 3 + j2
 					c = active_question.matrix[pos]
+					#BETTER: use select instead of input
 					if c == '0':
 						matrix[i1][j1][i2][j2] = "<input type='text' maxlength='1' name=" + str(pos) + " />"
 					else:
