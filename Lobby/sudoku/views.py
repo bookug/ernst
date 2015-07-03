@@ -19,8 +19,6 @@ for i1 in range(3):
 global html_matrix
 html_matrix = deepcopy(matrix)		#not use = directly
 
-#TODO: difficulty? compute space freedom!
-
 def initialize(request):
 	for question in Question.objects.all():
 		question.delete()
