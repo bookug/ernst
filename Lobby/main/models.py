@@ -18,6 +18,7 @@ class Room(models.Model):
 class User(models.Model):
 	nickName = models.CharField(max_length=20, default="")
 	room = models.ForeignKey(Room, default=0, related_name='room_user')
+	headImg = models.FileField(upload_to="./data/", default="")
 	def __str__(self):
 		return self.nickName
 

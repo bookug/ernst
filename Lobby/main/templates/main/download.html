@@ -1,0 +1,12 @@
+<h1>select several files you want to download</h1>
+<form action="/main/todownload/" method="post">
+	{% csrf_token %}
+	{% for file in file_list %}
+	<p><input type="radio" name="file" value="{{ file }}" />{{ file }}</p>
+	{% endfor %}
+	<p><input type="submit" value="todownload" /></p>
+</form>
+<form action="/main/" method="get">
+	<p><input type="submit" value="return" /></p>
+</form>
+

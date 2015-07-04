@@ -1,9 +1,18 @@
-<h1>index page</h1>
+<h1>Welcome to the Lobby!</h1>
 <p>{{ message }}</p>
-<p>please input your nickname:</p>
-<form action="/main/" method="post">
+<p>please input your information:</p>
+<form enctype="multipart/form-data" action="/main/" method="post">
 {% csrf_token %}
-<input type="text" name="nickname" />
-<input type="submit" value="join!" />
+<!-- <input type="text" name="nickname" /> -->
+{{ uf.as_p }}
+<p><input type="submit" value="join!" /></p>
+</form>
+<form action="/main/upload/" method="get">
+	<p>you can upload files.</p>
+	<p><input type="submit" value="upload" /></p>
+</form>
+<form action="/main/download/" method="get">
+	<p>you can download files.</p>
+	<p><input type="submit" value="download" /></p>
 </form>
 

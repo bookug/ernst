@@ -1,0 +1,11 @@
+<h1>select your file and upload to server</h1>
+{{ message }}
+<form action="/main/upload/" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+	<!--	<p><input type="file" name="file" /></p>
+	<p><br /></p> -->
+	<!--	<p>{{ form }}</p> -->
+	{{ form.as_p }}
+	<p><input type="submit" value="upload" /></p>
+</form>
+
