@@ -9,6 +9,10 @@ import os
 #NOTICE: avoid import * because functions may be overrided
 #there is an open function in os accepting integer args, which conflicts with open in python
 
+import sys
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
+
 global active_user
 active_user = User()
 #global active_room
@@ -90,6 +94,7 @@ def good_download(request):			#to download big file
 	def file_iterator(file_name, chunk_size=512):
 		f = open(file_name, "rb")
 		while True:
+			#read() will get the whole file, maybe too large!
 			c = f.read(chunk_size)
 			if c:
 				yield c

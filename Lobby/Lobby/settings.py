@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 	'sudoku',
 	'gobang',
 	'main',
+	'chatroom',
 )
 
 MIDDLEWARE_CLASSES = (
